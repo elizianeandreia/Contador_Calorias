@@ -3,6 +3,7 @@
     --rosa:#C71585;
     --linear:#FAF0E6;	
     --old:#FDF5E6;
+    --cor-escura:#2F4F4F;
 }
 
 body {
@@ -48,7 +49,7 @@ button {
 input,
 select {
   min-height: 24px;
-  color: var(--dark-blue);
+  color: var(--cor-escura);
 }
 
 fieldset,
