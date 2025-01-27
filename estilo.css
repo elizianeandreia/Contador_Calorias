@@ -1,0 +1,75 @@
+:root{
+    --rosa1:#FFFAFA;
+    --rosa:#C71585;
+    --linear:#FAF0E6;	
+    --old:#FDF5E6;
+}
+
+body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:18px;
+    background-color:var(--rosa1);
+    color: var(--rosa);
+}
+
+    h1 {
+        text-align: center;
+      }
+      
+      .container {
+        width: 90%;
+        max-width: 680px;
+      }
+
+      h1,
+      .container,
+      .saida {
+        margin: 20px auto;
+      }
+      
+      label,
+legend {
+  font-weight: bold;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+    cursor: pointer;
+    text-decoration: none;
+    background-color:var(--linear) ;
+    border: 2px solid var(--old);
+  }
+
+  button,
+input,
+select {
+  min-height: 24px;
+  color: var(--dark-blue);
+}
+
+fieldset,
+label,
+button,
+input,
+select {
+  margin-bottom: 10px;
+}
+
+saida{
+    border: 2px solid var(--rosa);
+  padding: 10px;
+  text-align: center;
+}
+
+.hide {
+    display: none;
+  }
+  
+  .saida span {
+    font-weight: bold;
+    font-size: 1.2em;
+  }

@@ -7,6 +7,7 @@
 <title>Contador de Calorias</title>
 </head>
 <body>
+ <main>
 <h1>Contador de Calorias</h1>
 <div clas="container">
 <form id="contador-calorias">
@@ -30,12 +31,13 @@
 <button type="button" id="add-entrada">Adicione Entrada</button>
 </span>
 </div>
+<div>
 <button type="submit"> Calcular as calorias restantes</button>
-<button type="button">Limpar</button>
-</form>
-
+<button type="button" id="limpar">Limpar</button>
 </div>
-<main>
+</form>
+<div id="saida" class="saida hide"></div>
+</div>
 </main>
 <script src="./script.js"></script>
 </body>
