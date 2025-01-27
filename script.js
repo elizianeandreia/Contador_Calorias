@@ -1,9 +1,9 @@
 const Contadorcalorias =document.getElementById('contador-calorias');
-const orcamentoNumeroInput = document.getElementById('');
-const listaEntrada = document.getElementById('');
-const addListaEntrada = document.getElementById('');
-const limparButton = document.getElementById('');
-const saida = document.getElementById('');
+const orcamentoNumeroInput = document.getElementById('orcamento');
+const listaEntrada = document.getElementById('lista-entrada');
+const addListaEntrada = document.getElementById('add-entrada');
+const limparButton = document.getElementById('limpar');
+const saida = document.getElementById('saida');
 
 let Erro =false;
 
