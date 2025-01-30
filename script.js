@@ -1,5 +1,5 @@
 const Contadorcalorias =document.getElementById('contador-calorias');
-const orcamentoNumeroInput = document.getElementById('orcamento');
+const orcamentoNumberInputs = document.getElementById('orcamento');
 const listaEntrada = document.getElementById('lista-entrada');
 const addEntradaButton = document.getElementById('add-entrada');
 const limparButton = document.getElementById('limpar');
@@ -41,12 +41,12 @@ const jantarNumberInputs =document.querySelectorAll("#jantar input[type='number'
 const aperitivosNumberInputs = document.querySelectorAll("#aperitivos input[type='number']");
 const exerciciosNumberInputs =document.querySelectorAll("#exercicios input[type='number']");
 
-const cafedamanhaCalorias = getCaloriasFromInputs();
-const almocoCalorias =getCaloriasFromInputs();
-const jantarCalorias =getCaloriasFromInputs();
-const aperitivosCalorias =getCaloriasFromInputs();
-const exerciciosCalorias =getCaloriasFromInputs();
-const orcamentoCalorias =getCaloriasFromInputs();
+const cafedamanhaCalorias = getCaloriasFromInputs(cafedamanhaNumberInputs);
+const almocoCalorias =getCaloriasFromInputs(almocoNumberInputs);
+const jantarCalorias =getCaloriasFromInputs(jantarNumberInputs);
+const aperitivosCalorias =getCaloriasFromInputs(aperitivosNumberInputs);
+const exerciciosCalorias =getCaloriasFromInputs(exerciciosNumberInputs);
+const orcamentoCalorias =getCaloriasFromInputs(orcamentoNumberInputs);
 
 if(Erro){
     return;
