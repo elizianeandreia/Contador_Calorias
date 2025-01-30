@@ -48,9 +48,15 @@ const aperitivosCalorias =getCaloriasFromInputs(aperitivosNumberInputs);
 const exerciciosCalorias =getCaloriasFromInputs(exerciciosNumberInputs);
 const orcamentoCalorias =getCaloriasFromInputs(orcamentoNumberInputs);
 
-if(Erro){
+if(Erro) {
     return;
 }
+
+const consumidaCalorias = ;
+const restanteCalorias = ;
+const superavitOuDeficit = ;
+
+
 }
 
 function getCaloriasFromInputs(){
