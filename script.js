@@ -52,9 +52,16 @@ if(Erro) {
     return;
 }
 
-const consumidaCalorias = ;
-const restanteCalorias = ;
-const superavitOuDeficit = ;
+const consumidaCalorias =cafedamanhaCalorias + almocoCalorias + jantarCalorias + aperitivosCalorias;
+const restanteCalorias = orcamentoCalorias - consumidaCalorias + exerciciosCalorias;
+const superavitOuDeficit = restanteCalorias < 0 ?'Superavit' : 'Deficit';
+saida.innerHTML=`
+<span class=""> Caloria </span>
+<hr>
+<p> >Calorias Orçadas</p>
+<p> Calorias Consumidas</p>
+<p> Calorias Queimadas</p>
+`;
 
 
 }
