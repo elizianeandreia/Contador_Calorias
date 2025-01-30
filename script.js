@@ -35,11 +35,11 @@ function calculadorCalorias (e){
 e.preventDefault();
 Erro =false;
 
-const cafedamanhaNumberInputs = document.querySelectorAll();
-const almocoNumberInputs =document.querySelectorAll();
-const jantarNumberInputs =document.querySelectorAll();
-const aperitivosNumberInputs = document.querySelectorAll();
-const exerciciosNumberInputs =document.querySelectorAll();
+const cafedamanhaNumberInputs = document.querySelectorAll("#cafedamanha input[type='number']");
+const almocoNumberInputs =document.querySelectorAll("#almoco input[type='number']");
+const jantarNumberInputs =document.querySelectorAll("#jantar input[type='number']");
+const aperitivosNumberInputs = document.querySelectorAll("#aperitivos input[type='number']");
+const exerciciosNumberInputs =document.querySelectorAll("#exercicios input[type='number']");
 
 const cafedamanhaCalorias = getCaloriasFromInputs();
 const almocoCalorias =getCaloriasFromInputs();
