@@ -1,5 +1,5 @@
 const Contadorcalorias =document.getElementById('contador-calorias');
-const orcamentoNumberInputs = document.getElementById('orcamento');
+const orcamentoNumberInput = document.getElementById('orcamento');
 const listaEntrada = document.getElementById('lista-entrada');
 const addEntradaButton = document.getElementById('add-entrada');
 const limparButton = document.getElementById('limpar');
@@ -21,12 +21,11 @@ function isInvalidInput(str) {
     const targetInputContainer = document.querySelector(`#${listaEntrada.value} .input-container`);
     const entradaNumber = targetInputContainer.querySelectorAll('input[type="text"]').length + 1;
     const HTMLString = `
-        <label for="${listaEntrada.value}-${entradaNumber}-nome">Entrada ${entradaNumber} Nome</label>
-        <input type="text" id="${listaEntrada.value}-${entradaNumber}-nome" placeholder="Nome">
-        <label for="${listaEntrada.value}-${entradaNumber}-calorias">Entrada ${entradaNumber} Calorias</label>
-        <input type="number" min="0" id="${listaEntrada.value}-${entradaNumber}-calorias" placeholder="Calorias">
-    `;
-
+    <label for="${listaEntrada.value}-${entradaNumber}-nome">Entrada ${entradaNumber} Nome</label>
+    <input type="text" id="${listaEntrada.value}-${entradaNumber}-nome" placeholder="Nome" required>
+    <label for="${listaEntrada.value}-${entradaNumber}-calorias">Entrada ${entradaNumber} Calorias</label>
+    <input type="number" min="0" id="${listaEntrada.value}-${entradaNumber}-calorias" placeholder="Calorias" required>
+`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
 }
 
@@ -46,7 +45,7 @@ const almocoCalorias =getCaloriasFromInputs(almocoNumberInputs);
 const jantarCalorias =getCaloriasFromInputs(jantarNumberInputs);
 const aperitivosCalorias =getCaloriasFromInputs(aperitivosNumberInputs);
 const exerciciosCalorias =getCaloriasFromInputs(exerciciosNumberInputs);
-const orcamentoCalorias =getCaloriasFromInputs(orcamentoNumberInputs);
+const orcamentoCalorias =getCaloriasFromInputs(orcamentoNumberInput.value);
 
 if(Erro) {
     return;
@@ -55,23 +54,44 @@ if(Erro) {
 const consumidaCalorias =cafedamanhaCalorias + almocoCalorias + jantarCalorias + aperitivosCalorias;
 const restanteCalorias = orcamentoCalorias - consumidaCalorias + exerciciosCalorias;
 const superavitOuDeficit = restanteCalorias < 0 ?'Superavit' : 'Deficit';
-saida.innerHTML=`
-<span class="${superavitOuDeficit.toLocaleLowerCase()}">${Math.abs(restanteCalorias)} Caloria ${superavitOuDeficit}</span>
-<hr>
-<p>${orcamentoCalorias} Calorias Orçadas</p>
-<p>${consumidaCalorias} Calorias Consumidas</p>
-<p>${exerciciosCalorias} Calorias Queimadas</p>
+saida.innerHTML = `
+    <span class="${superavitOuDeficit.toLowerCase()}">${Math.abs(restanteCalorias)} Caloria ${superavitOuDeficit}</span>
+    <hr>
+    <p>${orcamentoCalorias} Calorias Orçadas</p>
+    <p>${consumidaCalorias} Calorias Consumidas</p>
+    <p>${exerciciosCalorias} Calorias Queimadas</p>
 `;
 saida.classList.remove('hide');
 
 }
 
-function getCaloriasFromInputs(){
+function getCaloriasFromInputs(lista){
+     let calorias = 0;
 
+     for(const item of lista) {
+        const atualValor = limparInputString(item.value);
+        const invalidInputMatch = isInvalidInput(atualValor);
+
+        if(invalidInputMatch){
+            alert(`Entrada Inválida: ${invalidInputMatch[0]}`);
+            Erro =true;
+            return null;
+        }
+            calorias += Number(atualValor);
+     }
+     return calorias;
 }
 
 function limparForm(){
-
+const inputContainers = Array.from(document.querySelectorAll('.input-container'));
+for(const container of inputContainers) {
+    container.innerHTML ='';
+}
+orcamentoNumberInput.value ='';
+saida.innerText = '';
+saida.classList.add('hide');
 }
 
 addEntradaButton.addEventListener("click", addEntrada);
+limparButton.addEventListener("click", limparForm);
+Contadorcalorias.addEventListener("submit", calculadorCalorias);
