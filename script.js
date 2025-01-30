@@ -56,13 +56,13 @@ const consumidaCalorias =cafedamanhaCalorias + almocoCalorias + jantarCalorias +
 const restanteCalorias = orcamentoCalorias - consumidaCalorias + exerciciosCalorias;
 const superavitOuDeficit = restanteCalorias < 0 ?'Superavit' : 'Deficit';
 saida.innerHTML=`
-<span class=""> Caloria </span>
+<span class="${superavitOuDeficit.toLocaleLowerCase()}">${Math.abs(restanteCalorias)} Caloria ${superavitOuDeficit}</span>
 <hr>
-<p> >Calorias Orçadas</p>
-<p> Calorias Consumidas</p>
-<p> Calorias Queimadas</p>
+<p>${orcamentoCalorias} Calorias Orçadas</p>
+<p>${consumidaCalorias} Calorias Consumidas</p>
+<p>${exerciciosCalorias} Calorias Queimadas</p>
 `;
-
+saida.classList.remove('hide');
 
 }
 
