@@ -17,6 +17,26 @@ function isInvalidInput(str) {
     return str.match(regex);
 }
 
- function addEntrada(){
+ function addEntrada() {
+    const targetInputContainer =document.querySelector(listaEntrada);
+    const entradaNumber = targetInputContainer.querySelectorAll();
+    const HTMLString =`
+    <label></label>
+    <input>
+    <label></label>
+    <input>
+    `
 
- }
+}
+
+function calculadorCalorias (){
+
+}
+
+function getCaloriasFromInput(){
+
+}
+
+function limparForm(){
+    
+}
