@@ -6,79 +6,101 @@
     --cor-escura:#2F4F4F;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
 body {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size:18px;
-    background-color:var(--rosa1);
-    color: var(--rosa);
-}
-
-    h1 {
-        text-align: center;
-      }
-      
-      .container {
-        width: 90%;
-        max-width: 680px;
-      }
-
-      h1,
-      .container,
-      .saida {
-        margin: 20px auto;
-      }
-      
-      label,
-legend {
-  font-weight: bold;
-}
-
-.input-container {
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
 
-button {
-    cursor: pointer;
-    text-decoration: none;
-    background-color:var(--linear) ;
-    border: 2px solid var(--old);
-  }
-
-  button,
-input,
-select {
-  min-height: 24px;
-  color: var(--cor-escura);
-}
-
-fieldset,
-label,
-button,
-input,
-select {
-  margin-bottom: 10px;
-}
-
-saida{
-    border: 2px solid var(--rosa);
-  padding: 10px;
+.container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
   text-align: center;
 }
 
-.hide {
-    display: none;
-  }
-  
-  .saida span {
-    font-weight: bold;
-    font-size: 1.2em;
-  }
+h1 {
+  color: #ff6f61;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
 
-  .superavit{
-    color:var(--rosa);
-  }
+form label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
 
-  .deficit{
-color:var(--old);
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+fieldset {
+  border: 2px solid #ff6f61;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+legend {
+  font-weight: bold;
+  color: #ff6f61;
+  padding: 0 5px;
+}
+
+button {
+  background: #ff6f61;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+}
+
+button:hover {
+  background: #e65b54;
+}
+
+#saida {
+  margin-top: 15px;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  background: #fff3cd;
+  color: #856404;
+  display: none;
+}
+
+.saida.superavit {
+  background: #ffcccc;
+  color: #583433;
+}
+
+.saida.deficit {
+  background: #d4edda;
+  color: #155724;
+}
+
+@media (max-width: 600px) {
+  .container {
+      width: 90%;
   }
+}
