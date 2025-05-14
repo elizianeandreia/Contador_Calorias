@@ -22,6 +22,10 @@
   font-weight: 600;
   text-shadow: none;
   }
+
+#lista-entrada{
+    color:#2e2a2a;
+        }
   
   .container {
   width: 100%;
