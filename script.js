@@ -30,6 +30,19 @@ function addEntrada() {
 
   const icone = icones[listaEntrada.value] || "➕";
 
+  let placeholderNome = "Ex: Alimento";
+  if (listaEntrada.value === "exercicios") {
+    placeholderNome = "Ex: Corrida";
+  } else if (listaEntrada.value === "aperitivos") {
+    placeholderNome = "Ex: Batata Frita";
+  } else if (listaEntrada.value === "cafedamanha") {
+    placeholderNome = "Ex: Pão com Ovo";
+  } else if (listaEntrada.value === "almoco") {
+    placeholderNome = "Ex: Arroz com Feijão";
+  } else if (listaEntrada.value === "jantar") {
+    placeholderNome = "Ex: Sopa";
+  }
+
   const HTMLString = `
     <div class="entrada-item flex flex-col sm:flex-row sm:items-end gap-4 mb-4 border-b pb-4 relative transition-all duration-300 ease-in-out">
       <button type="button"
@@ -44,7 +57,7 @@ function addEntrada() {
         </label>
         <input type="text"
           class="entrada-nome mt-1 w-full p-2 border border-gray-300 rounded-md"
-          placeholder="Ex: Banana" />
+          placeholder="${placeholderNome}" />
       </div>
 
       <div class="flex-1">
@@ -60,7 +73,6 @@ function addEntrada() {
 
   targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
 
- 
   const botoesRemover = targetInputContainer.querySelectorAll('.remove-entrada');
   botoesRemover.forEach(btn => {
     btn.onclick = () => {
@@ -71,7 +83,6 @@ function addEntrada() {
       }
     };
   });
-
 
   const novosInputs = targetInputContainer.querySelectorAll('.entrada-calorias');
   novosInputs.forEach(input => {
@@ -85,8 +96,6 @@ function addEntrada() {
     });
   });
 }
-
-
 
 function calcularCalorias(e) {
   e.preventDefault();
@@ -111,31 +120,28 @@ function calcularCalorias(e) {
 
   const consumidaCalorias = cafedamanhaCalorias + almocoCalorias + jantarCalorias + aperitivosCalorias;
   const restanteCalorias = orcamentoCalorias - consumidaCalorias + exerciciosCalorias;
-  
-let resultado = "";
-let classeResultado = "";
 
-if (restanteCalorias < 0) {
-  resultado = `${Math.abs(restanteCalorias)} Caloria(s) em Déficit`;
-  classeResultado = "deficit";
-} else if (restanteCalorias > 0) {
-  resultado = `${restanteCalorias} Caloria(s) de Superavit`;
-  classeResultado = "superavit";
-} else {
-  resultado = `Você atingiu exatamente sua meta de calorias!`;
-  classeResultado = "neutro";
-}
+  let resultado = "";
+  let classeResultado = "";
 
-saida.innerHTML = `
-  <span class="${classeResultado}">${resultado}</span>
-  <hr>
-  <p>${orcamentoCalorias} Calorias Orçadas</p>
-  <p>${consumidaCalorias} Calorias Consumidas</p>
-  <p>${exerciciosCalorias} Calorias Queimadas</p>
-`;
+  if (restanteCalorias < 0) {
+    resultado = `${Math.abs(restanteCalorias)} Caloria(s) em Déficit`;
+    classeResultado = "deficit";
+  } else if (restanteCalorias > 0) {
+    resultado = `${restanteCalorias} Caloria(s) de Superavit`;
+    classeResultado = "superavit";
+  } else {
+    resultado = `Você atingiu exatamente sua meta de calorias!`;
+    classeResultado = "neutro";
+  }
 
-saida.classList.remove('hide');
-
+  saida.innerHTML = `
+    <span class="${classeResultado}">${resultado}</span>
+    <hr>
+    <p>${orcamentoCalorias} Calorias Orçadas</p>
+    <p>${consumidaCalorias} Calorias Consumidas</p>
+    <p>${exerciciosCalorias} Calorias Queimadas</p>
+  `;
 
   saida.classList.remove('hide');
 }
@@ -145,25 +151,26 @@ function getCaloriasFromInputs(list) {
 
   for (const item of list) {
     const currVal = limparInputString(item.value);
-    const invalidInputMatch = isInvalidInput(currVal);
+    if (!currVal) continue;
 
+    const invalidInputMatch = isInvalidInput(currVal);
     if (invalidInputMatch) {
       alert(`Entrada Inválida: ${invalidInputMatch[0]}`);
       Erro = true;
       return null;
     }
+
     calorias += Number(currVal);
   }
+
   return calorias;
 }
 
 function limparForm() {
   const inputContainers = Array.from(document.querySelectorAll('.input-container'));
-
   for (const container of inputContainers) {
     container.innerHTML = '';
   }
-
   orcamentoNumberInput.value = '';
   saida.innerText = '';
   saida.classList.add('hide');
@@ -172,12 +179,3 @@ function limparForm() {
 addEntradaButton.addEventListener("click", addEntrada);
 contadorCalorias.addEventListener("submit", calcularCalorias);
 limparButton.addEventListener("click", limparForm);
-
-function limparEntradas(refeicaoId) {
-  const container = document.querySelector(`#${refeicaoId} .input-container`);
-  if (container.children.length === 0) return;
-  if (confirm("Deseja remover todas as entradas desta refeição?")) {
-    container.innerHTML = "";
-  }
-}
-
