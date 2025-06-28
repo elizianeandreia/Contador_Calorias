@@ -18,19 +18,49 @@ function isInvalidInput(str) {
 
 function addEntrada() {
   const targetInputContainer = document.querySelector(`#${listaEntrada.value} .input-container`);
-  const entradaNumber = targetInputContainer.querySelectorAll('input[type="text"]').length + 1;
+  const entradaNumber = targetInputContainer.querySelectorAll('.entrada-item').length + 1;
+
   const HTMLString = `
-  <label for="${listaEntrada.value}-${entradaNumber}-nome">Entrada ${entradaNumber} Nome</label>
-  <input type="text" id="${listaEntrada.value}-${entradaNumber}-nome" placeholder="Nome" />
-  <label for="${listaEntrada.value}-${entradaNumber}-calorias">Entrada ${entradaNumber} Calorias</label>
-  <input
-    type="number"
-    min="0"
-    id="${listaEntrada.value}-${entradaNumber}-calorias"
-    placeholder="Calorias"
-  />`;
+    <div class="entrada-item flex flex-col sm:flex-row sm:items-end gap-4 mb-4">
+      <div class="flex-1">
+        <label class="block text-sm font-medium text-gray-700" for="${listaEntrada.value}-${entradaNumber}-nome">
+          <span class="inline-flex items-center gap-1">
+            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M5.121 17.804A9 9 0 1117.803 5.12 9 9 0 015.12 17.804z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            Nome da Entrada ${entradaNumber}
+          </span>
+        </label>
+        <input type="text" id="${listaEntrada.value}-${entradaNumber}-nome"
+          class="mt-1 w-full p-2 border border-gray-300 rounded-md" placeholder="Ex: Maçã" />
+      </div>
+
+      <div class="flex-1">
+        <label class="block text-sm font-medium text-gray-700" for="${listaEntrada.value}-${entradaNumber}-calorias">
+          <span class="inline-flex items-center gap-1">
+            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 8c-1.657 0-3 1.343-3 3v5h6v-5c0-1.657-1.343-3-3-3z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M5 21h14a2 2 0 002-2v-4a6 6 0 00-6-6H9a6 6 0 00-6 6v4a2 2 0 002 2z"></path>
+            </svg>
+            Calorias
+          </span>
+        </label>
+        <input type="number" min="0" id="${listaEntrada.value}-${entradaNumber}-calorias"
+          class="mt-1 w-full p-2 border border-gray-300 rounded-md" placeholder="Ex: 100" />
+      </div>
+    </div>
+  `;
+
   targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
 }
+
 
 function calcularCalorias(e) {
   e.preventDefault();
