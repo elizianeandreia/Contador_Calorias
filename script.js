@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const contadorCalorias = document.getElementById('contador-calorias');
   const orcamentoNumberInput = document.getElementById('orcamento');
+  const avisoOrcamento = document.getElementById('orcamento-aviso');
   const listaEntrada = document.getElementById('lista-entrada');
   const addEntradaButton = document.getElementById('add-entrada');
   const limparButton = document.getElementById('limpar');
@@ -33,17 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const icone = icones[listaEntrada.value] || "➕";
 
     let placeholderNome = "Ex: Alimento";
-    if (listaEntrada.value === "exercicios") {
-      placeholderNome = "Ex: Corrida";
-    } else if (listaEntrada.value === "aperitivos") {
-      placeholderNome = "Ex: Batata Frita";
-    } else if (listaEntrada.value === "cafedamanha") {
-      placeholderNome = "Ex: Pão com Ovo";
-    } else if (listaEntrada.value === "almoco") {
-      placeholderNome = "Ex: Arroz com Feijão";
-    } else if (listaEntrada.value === "jantar") {
-      placeholderNome = "Ex: Sopa";
-    }
+    if (listaEntrada.value === "exercicios") placeholderNome = "Ex: Corrida";
+    else if (listaEntrada.value === "aperitivos") placeholderNome = "Ex: Batata Frita";
+    else if (listaEntrada.value === "cafedamanha") placeholderNome = "Ex: Pão com Ovo";
+    else if (listaEntrada.value === "almoco") placeholderNome = "Ex: Arroz com Feijão";
+    else if (listaEntrada.value === "jantar") placeholderNome = "Ex: Sopa";
 
     const HTMLString = `
       <div class="entrada-item flex flex-col sm:flex-row sm:items-end gap-4 mb-4 border-b pb-4 relative transition-all duration-300 ease-in-out">
@@ -52,23 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
           title="Remover entrada">
           ✖
         </button>
-
         <div class="flex-1">
           <label class="block text-sm font-medium text-gray-700">
             ${icone} Nome da Entrada ${entradaNumber}
           </label>
-          <input type="text"
-            class="entrada-nome mt-1 w-full p-2 border border-gray-300 rounded-md"
-            placeholder="${placeholderNome}" />
+          <input type="text" class="entrada-nome mt-1 w-full p-2 border border-gray-300 rounded-md" placeholder="${placeholderNome}" />
         </div>
-
         <div class="flex-1">
-          <label class="block text-sm font-medium text-gray-700">
-            🔥 Calorias
-          </label>
-          <input type="number" min="0"
-            class="entrada-calorias mt-1 w-full p-2 border border-gray-300 rounded-md"
-            placeholder="Ex: 120" />
+          <label class="block text-sm font-medium text-gray-700">🔥 Calorias</label>
+          <input type="number" min="0" class="entrada-calorias mt-1 w-full p-2 border border-gray-300 rounded-md" placeholder="Ex: 120" />
         </div>
       </div>
     `;
@@ -102,11 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function calcularCalorias(e) {
     e.preventDefault();
     Erro = false;
-
     orcamentoNumberInput.classList.remove("border-red-400", "bg-red-50");
+    avisoOrcamento.classList.add("hidden");
 
     if (!orcamentoNumberInput.value || Number(orcamentoNumberInput.value) <= 0) {
-      alert("Por favor, insira um valor válido de orçamento de calorias.");
+      avisoOrcamento.classList.remove("hidden");
       orcamentoNumberInput.classList.add("border-red-400", "bg-red-50");
       orcamentoNumberInput.focus();
       return;
@@ -178,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     orcamentoNumberInput.value = '';
     orcamentoNumberInput.classList.remove("border-red-400", "bg-red-50");
+    avisoOrcamento.classList.add("hidden");
     saida.innerText = '';
     saida.classList.add('hidden');
   }
