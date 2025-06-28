@@ -3,64 +3,66 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./estilo.css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Contador de Calorias</title>
   </head>
-  <body>
-    <main>
-      <h1>Contador de Calorias</h1>
-      <div class="container">
-        <form id="contador-calorias">
-          <label for="orcamento">Orçamento</label>
-          <input
-            type="number"
-            min="0"
-            id="orcamento"
-            placeholder="Orçamento diário de calorias"
-            required
-          />
-          <fieldset id="cafedamanha">
-            <legend>Café da Manhã</legend>
-            <div class="input-container"></div>
+  <body class="bg-gradient-to-r from-indigo-100 to-indigo-200 min-h-screen flex items-center justify-center">
+    <main class="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-8">
+      <h1 class="text-3xl font-bold text-indigo-700 text-center mb-6">Contador de Calorias</h1>
+      <form id="contador-calorias" class="space-y-4">
+        <div>
+          <label for="orcamento" class="block font-medium text-gray-700">Orçamento</label>
+          <input type="number" min="0" id="orcamento" placeholder="Orçamento diário de calorias" required class="w-full mt-1 p-3 border rounded-md focus:ring-2 focus:ring-indigo-300">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <fieldset id="cafedamanha" class="border border-indigo-300 p-4 rounded-md">
+            <legend class="font-semibold text-indigo-600">Café da Manhã</legend>
+            <div class="input-container space-y-2 mt-2"></div>
           </fieldset>
-          <fieldset id="almoco">
-            <legend>Almoço</legend>
-            <div class="input-container"></div>
+
+          <fieldset id="almoco" class="border border-indigo-300 p-4 rounded-md">
+            <legend class="font-semibold text-indigo-600">Almoço</legend>
+            <div class="input-container space-y-2 mt-2"></div>
           </fieldset>
-          <fieldset id="jantar">
-            <legend>Jantar</legend>
-            <div class="input-container"></div>
+
+          <fieldset id="jantar" class="border border-indigo-300 p-4 rounded-md">
+            <legend class="font-semibold text-indigo-600">Jantar</legend>
+            <div class="input-container space-y-2 mt-2"></div>
           </fieldset>
-          <fieldset id="aperitivos">
-            <legend>Aperitivos</legend>
-            <div class="input-container"></div>
+
+          <fieldset id="aperitivos" class="border border-indigo-300 p-4 rounded-md">
+            <legend class="font-semibold text-indigo-600">Aperitivos</legend>
+            <div class="input-container space-y-2 mt-2"></div>
           </fieldset>
-          <fieldset id="exercicios">
-            <legend>Exercícios</legend>
-            <div class="input-container"></div>
+
+          <fieldset id="exercicios" class="border border-indigo-300 p-4 rounded-md col-span-full">
+            <legend class="font-semibold text-indigo-600">Exercícios</legend>
+            <div class="input-container space-y-2 mt-2"></div>
           </fieldset>
-          <div class="controls">
-            <span>
-              <label for="lista-entrada">Adicionar alimento ou exercício:</label>
-              <select id="lista-entrada" name="options">
-                <option value="cafedamanha" selected>Café da Manhã</option>
-                <option value="almoco">Almoço</option>
-                <option value="jantar">Jantar</option>
-                <option value="aperitivos">Aperitivos</option>
-                <option value="exercicios">Exercícios</option>
-              </select>
-              <button type="button" id="add-entrada">Adicionar Entrada</button>
-            </span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-6">
+          <div class="flex-1">
+            <label for="lista-entrada" class="block font-medium text-gray-700">Adicionar alimento ou exercício:</label>
+            <select id="lista-entrada" name="options" class="w-full mt-1 p-3 border rounded-md">
+              <option value="cafedamanha" selected>Café da Manhã</option>
+              <option value="almoco">Almoço</option>
+              <option value="jantar">Jantar</option>
+              <option value="aperitivos">Aperitivos</option>
+              <option value="exercicios">Exercícios</option>
+            </select>
           </div>
-          <div>
-            <button type="submit">
-              Calcular Calorias Restantes
-            </button>
-            <button type="button" id="limpar">Limpar</button>
-          </div>
-        </form>
-        <div id="saida" class="output hide"></div>
-      </div>
+          <button type="button" id="add-entrada" class="bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition">Adicionar Entrada</button>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+          <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition">Calcular Calorias Restantes</button>
+          <button type="button" id="limpar" class="bg-red-500 text-white px-6 py-3 rounded-md hover:bg-red-600 transition">Limpar</button>
+        </div>
+
+        <div id="saida" class="output hidden mt-6 text-center p-4 rounded-md bg-gray-100 text-gray-800 text-lg"></div>
+      </form>
     </main>
     <script src="./script.js"></script>
   </body>
