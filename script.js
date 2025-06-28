@@ -118,12 +118,8 @@ function calcularCalorias(e) {
     return;
   }
 
-
-  const btnCalcular = document.getElementById('btn-calcular');
-  btnCalcular.addEventListener('click', calcularCalorias);
   const consumidaCalorias = cafedamanhaCalorias + almocoCalorias + jantarCalorias + aperitivosCalorias;
   const restanteCalorias = orcamentoCalorias - consumidaCalorias + exerciciosCalorias;
-
 
   let resultado = "";
   let classeResultado = "";
@@ -177,8 +173,10 @@ function limparForm() {
   }
   orcamentoNumberInput.value = '';
   saida.innerText = '';
-  saida.classList.add('hide');
+  saida.classList.add('hidden');
 }
 
 addEntradaButton.addEventListener("click", addEntrada);
 limparButton.addEventListener("click", limparForm);
+const btnCalcular = document.getElementById('btn-calcular');
+btnCalcular.addEventListener('click', calcularCalorias);
