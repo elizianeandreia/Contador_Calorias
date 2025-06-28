@@ -143,7 +143,7 @@ function calcularCalorias(e) {
     <p>${exerciciosCalorias} Calorias Queimadas</p>
   `;
 
-  saida.classList.remove('hide');
+  saida.classList.remove('hidden');
 }
 
 function getCaloriasFromInputs(list) {
