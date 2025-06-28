@@ -118,10 +118,12 @@ function calcularCalorias(e) {
     return;
   }
 
+
+  const btnCalcular = document.getElementById('btn-calcular');
+  btnCalcular.addEventListener('click', calcularCalorias);
   const consumidaCalorias = cafedamanhaCalorias + almocoCalorias + jantarCalorias + aperitivosCalorias;
   const restanteCalorias = orcamentoCalorias - consumidaCalorias + exerciciosCalorias;
-  const botaoCalcular = document.getElementById('calcular-calorias-btn');
-  botaoCalcular.addEventListener('click', calcularCalorias);
+
 
   let resultado = "";
   let classeResultado = "";
@@ -179,6 +181,4 @@ function limparForm() {
 }
 
 addEntradaButton.addEventListener("click", addEntrada);
-contadorCalorias.addEventListener("submit", calcularCalorias);
-console.log(contadorCalorias);
 limparButton.addEventListener("click", limparForm);
