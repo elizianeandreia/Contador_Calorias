@@ -155,3 +155,12 @@ function limparForm() {
 addEntradaButton.addEventListener("click", addEntrada);
 contadorCalorias.addEventListener("submit", calcularCalorias);
 limparButton.addEventListener("click", limparForm);
+
+function limparEntradas(refeicaoId) {
+  const container = document.querySelector(`#${refeicaoId} .input-container`);
+  if (container.children.length === 0) return;
+  if (confirm("Deseja remover todas as entradas desta refeição?")) {
+    container.innerHTML = "";
+  }
+}
+
