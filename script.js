@@ -103,6 +103,15 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     Erro = false;
 
+    orcamentoNumberInput.classList.remove("border-red-400", "bg-red-50");
+
+    if (!orcamentoNumberInput.value || Number(orcamentoNumberInput.value) <= 0) {
+      alert("Por favor, insira um valor válido de orçamento de calorias.");
+      orcamentoNumberInput.classList.add("border-red-400", "bg-red-50");
+      orcamentoNumberInput.focus();
+      return;
+    }
+
     const cafedamanhaNumberInputs = document.querySelectorAll("#cafedamanha input[type='number']");
     const almocoNumberInputs = document.querySelectorAll("#almoco input[type='number']");
     const jantarNumberInputs = document.querySelectorAll("#jantar input[type='number']");
@@ -168,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
       container.innerHTML = '';
     }
     orcamentoNumberInput.value = '';
+    orcamentoNumberInput.classList.remove("border-red-400", "bg-red-50");
     saida.innerText = '';
     saida.classList.add('hidden');
   }
