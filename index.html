@@ -6,34 +6,34 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Contador de Calorias</title>
   </head>
-  <body class="bg-gradient-to-br from-indigo-100 to-blue-200 min-h-screen flex items-center justify-center p-4">
+  <body class="bg-gradient-to-br from-green-100 to-lime-200 min-h-screen flex items-center justify-center p-4">
     <main class="w-full max-w-4xl bg-white shadow-lg rounded-xl p-6 sm:p-10">
-      <h1 class="text-3xl font-extrabold text-center text-indigo-700 mb-8">Contador de Calorias</h1>
+      <h1 class="text-3xl font-extrabold text-center text-green-700 mb-8">Contador de Calorias</h1>
       <form id="contador-calorias" class="space-y-6">
         <div>
           <label for="orcamento" class="block text-gray-700 font-semibold">Orçamento</label>
-          <input type="number" id="orcamento" min="0" required placeholder="Orçamento diário de calorias" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-400" />
+          <input type="number" id="orcamento" min="0" required placeholder="Orçamento diário de calorias" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-green-400" />
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <fieldset id="cafedamanha" class="border border-indigo-300 bg-indigo-50 rounded-lg p-4">
-            <legend class="text-indigo-700 font-semibold">Café da Manhã</legend>
+          <fieldset id="cafedamanha" class="border border-green-300 bg-green-50 rounded-lg p-4">
+            <legend class="text-green-700 font-semibold">Café da Manhã</legend>
             <div class="input-container space-y-2 mt-3"></div>
           </fieldset>
-          <fieldset id="almoco" class="border border-indigo-300 bg-indigo-50 rounded-lg p-4">
-            <legend class="text-indigo-700 font-semibold">Almoço</legend>
+          <fieldset id="almoco" class="border border-green-300 bg-green-50 rounded-lg p-4">
+            <legend class="text-green-700 font-semibold">Almoço</legend>
             <div class="input-container space-y-2 mt-3"></div>
           </fieldset>
-          <fieldset id="jantar" class="border border-indigo-300 bg-indigo-50 rounded-lg p-4">
-            <legend class="text-indigo-700 font-semibold">Jantar</legend>
+          <fieldset id="jantar" class="border border-green-300 bg-green-50 rounded-lg p-4">
+            <legend class="text-green-700 font-semibold">Jantar</legend>
             <div class="input-container space-y-2 mt-3"></div>
           </fieldset>
-          <fieldset id="aperitivos" class="border border-indigo-300 bg-indigo-50 rounded-lg p-4">
-            <legend class="text-indigo-700 font-semibold">Aperitivos</legend>
+          <fieldset id="aperitivos" class="border border-green-300 bg-green-50 rounded-lg p-4">
+            <legend class="text-green-700 font-semibold">Aperitivos</legend>
             <div class="input-container space-y-2 mt-3"></div>
           </fieldset>
-          <fieldset id="exercicios" class="border border-green-300 bg-green-50 rounded-lg p-4 md:col-span-2">
-            <legend class="text-green-700 font-semibold">Exercícios</legend>
+          <fieldset id="exercicios" class="border border-yellow-300 bg-yellow-50 rounded-lg p-4 md:col-span-2">
+            <legend class="text-yellow-700 font-semibold">Exercícios</legend>
             <div class="input-container space-y-2 mt-3"></div>
           </fieldset>
         </div>
@@ -49,13 +49,13 @@
               <option value="exercicios">Exercícios</option>
             </select>
           </div>
-          <button type="button" id="add-entrada" class="bg-indigo-600 text-white px-5 py-3 rounded-md hover:bg-indigo-700 transition w-full md:w-auto">
+          <button type="button" id="add-entrada" class="bg-green-600 text-white px-5 py-3 rounded-md hover:bg-green-700 transition w-full md:w-auto">
             Adicionar Entrada
           </button>
         </div>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-          <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition w-full sm:w-auto">
+          <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition w-full sm:w-auto">
             Calcular Calorias Restantes
           </button>
           <button type="button" id="limpar" class="bg-red-500 text-white px-6 py-3 rounded-md hover:bg-red-600 transition w-full sm:w-auto">
