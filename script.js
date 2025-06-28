@@ -31,10 +31,13 @@ function addEntrada() {
   const icone = icones[listaEntrada.value] || "➕";
 
   const HTMLString = `
-    <div class="entrada-item flex flex-col sm:flex-row sm:items-end gap-4 mb-4 border-b pb-4 relative group">
-      <span class="absolute top-0 right-0 hidden group-hover:block">
-        <button type="button" class="text-red-500 hover:text-red-700 text-sm remove-entrada">✖</button>
-      </span>
+    <div class="entrada-item flex flex-col sm:flex-row sm:items-end gap-4 mb-4 border-b pb-4 relative transition-opacity duration-300 ease-in-out">
+      <button type="button"
+        class="absolute top-0 right-0 bg-red-100 text-red-600 text-xs px-2 py-1 rounded hover:bg-red-200 remove-entrada"
+        title="Remover entrada">
+        ✖
+      </button>
+
       <div class="flex-1">
         <label class="block text-sm font-medium text-gray-700" for="${listaEntrada.value}-${entradaNumber}-nome">
           ${icone} Nome da Entrada ${entradaNumber}
@@ -55,10 +58,13 @@ function addEntrada() {
 
   targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
 
+  // comportamento do botão de remover entrada
   const botoesRemover = targetInputContainer.querySelectorAll('.remove-entrada');
   botoesRemover.forEach(btn => {
     btn.onclick = () => {
-      btn.closest('.entrada-item').remove();
+      const item = btn.closest('.entrada-item');
+      item.classList.add('opacity-0');
+      setTimeout(() => item.remove(), 300); 
     };
   });
 }
