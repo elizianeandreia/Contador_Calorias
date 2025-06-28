@@ -31,7 +31,7 @@ function addEntrada() {
   const icone = icones[listaEntrada.value] || "➕";
 
   const HTMLString = `
-    <div class="entrada-item flex flex-col sm:flex-row sm:items-end gap-4 mb-4 border-b pb-4 relative transition-opacity duration-300 ease-in-out">
+    <div class="entrada-item flex flex-col sm:flex-row sm:items-end gap-4 mb-4 border-b pb-4 relative transition-all duration-300 ease-in-out">
       <button type="button"
         class="absolute top-0 right-0 bg-red-100 text-red-600 text-xs px-2 py-1 rounded hover:bg-red-200 remove-entrada"
         title="Remover entrada">
@@ -39,35 +39,53 @@ function addEntrada() {
       </button>
 
       <div class="flex-1">
-        <label class="block text-sm font-medium text-gray-700" for="${listaEntrada.value}-${entradaNumber}-nome">
+        <label class="block text-sm font-medium text-gray-700">
           ${icone} Nome da Entrada ${entradaNumber}
         </label>
-        <input type="text" id="${listaEntrada.value}-${entradaNumber}-nome"
-          class="mt-1 w-full p-2 border border-gray-300 rounded-md" placeholder="Ex: Banana" />
+        <input type="text"
+          class="entrada-nome mt-1 w-full p-2 border border-gray-300 rounded-md"
+          placeholder="Ex: Banana" />
       </div>
 
       <div class="flex-1">
-        <label class="block text-sm font-medium text-gray-700" for="${listaEntrada.value}-${entradaNumber}-calorias">
+        <label class="block text-sm font-medium text-gray-700">
           🔥 Calorias
         </label>
-        <input type="number" min="0" id="${listaEntrada.value}-${entradaNumber}-calorias"
-          class="mt-1 w-full p-2 border border-gray-300 rounded-md" placeholder="Ex: 120" />
+        <input type="number" min="0"
+          class="entrada-calorias mt-1 w-full p-2 border border-gray-300 rounded-md"
+          placeholder="Ex: 120" />
       </div>
     </div>
   `;
 
   targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
 
-  // comportamento do botão de remover entrada
+ 
   const botoesRemover = targetInputContainer.querySelectorAll('.remove-entrada');
   botoesRemover.forEach(btn => {
     btn.onclick = () => {
-      const item = btn.closest('.entrada-item');
-      item.classList.add('opacity-0');
-      setTimeout(() => item.remove(), 300); 
+      if (confirm("Tem certeza que deseja remover esta entrada?")) {
+        const item = btn.closest('.entrada-item');
+        item.classList.add('opacity-0', 'scale-95');
+        setTimeout(() => item.remove(), 300);
+      }
     };
   });
+
+
+  const novosInputs = targetInputContainer.querySelectorAll('.entrada-calorias');
+  novosInputs.forEach(input => {
+    input.addEventListener("input", () => {
+      const valor = parseInt(input.value);
+      if (valor > 500) {
+        input.classList.add("border-red-400", "bg-red-50");
+      } else {
+        input.classList.remove("border-red-400", "bg-red-50");
+      }
+    });
+  });
 }
+
 
 
 function calcularCalorias(e) {
