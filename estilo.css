@@ -149,6 +149,31 @@
   background: #f8d7da;
   color: #721c24;
   }
+
+.superavit {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.deficit {
+  background-color: #f8d7da;
+  color: #842029;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.neutro {
+  background-color: #e2e3e5;
+  color: #41464b;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
   
   .controls {
     margin-top: 20px;
