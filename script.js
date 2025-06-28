@@ -111,14 +111,31 @@ function calcularCalorias(e) {
 
   const consumidaCalorias = cafedamanhaCalorias + almocoCalorias + jantarCalorias + aperitivosCalorias;
   const restanteCalorias = orcamentoCalorias - consumidaCalorias + exerciciosCalorias;
-  const superavitOuDeficit = restanteCalorias < 0 ? 'Superavit' : 'Deficit';
-  saida.innerHTML = `
-  <span class="${superavitOuDeficit.toLowerCase()}">${Math.abs(restanteCalorias)} Caloria(s) ${superavitOuDeficit}</span>
+  
+let resultado = "";
+let classeResultado = "";
+
+if (restanteCalorias < 0) {
+  resultado = `${Math.abs(restanteCalorias)} Caloria(s) em Déficit`;
+  classeResultado = "deficit";
+} else if (restanteCalorias > 0) {
+  resultado = `${restanteCalorias} Caloria(s) de Superavit`;
+  classeResultado = "superavit";
+} else {
+  resultado = `Você atingiu exatamente sua meta de calorias!`;
+  classeResultado = "neutro";
+}
+
+saida.innerHTML = `
+  <span class="${classeResultado}">${resultado}</span>
   <hr>
   <p>${orcamentoCalorias} Calorias Orçadas</p>
   <p>${consumidaCalorias} Calorias Consumidas</p>
   <p>${exerciciosCalorias} Calorias Queimadas</p>
-  `;
+`;
+
+saida.classList.remove('hide');
+
 
   saida.classList.remove('hide');
 }
