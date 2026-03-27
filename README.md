@@ -20,12 +20,6 @@ JavaScript (Vanilla JS) → Manipulação do DOM e lógica do contador <br>
 4️ Clica no botão "Calcular as calorias restantes" para visualizar o balanço calórico. <br>
 5️ O sistema exibe se houve superávit (excesso de calorias) ou déficit (consumo abaixo do orçamento). <br>
 
- <stron>Melhorias Futuras:</strong>
-
- Salvar os registros localmente para persistência de dados. <br>
- Permitir edição e remoção de entradas adicionadas. <br>
-Criar uma versão responsiva para melhor experiência mobile. <br>
-
  <i><strong>Este projeto é ideal para quem busca monitorar sua alimentação de forma simples e prática!</i></strong>
 
  
